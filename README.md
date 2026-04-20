@@ -11,8 +11,8 @@ Copy this repo to create a new tool: `kbaseincubator/cdm_{toolname}`.
 1. **Copy this repo** → rename to `kbaseincubator/cdm_{toolname}`
 2. **Edit `Dockerfile`** → swap in the real tool image and entrypoint
 3. **Push / tag a release** → GitHub Actions builds and pushes to GHCR automatically
-4. **Ask Gavin to register the image** in CTS (you cannot do this yourself)
-5. **Create a demo notebook** at `global_share/jplfaria/{toolname}_demo.ipynb` on hub.berdl.kbase.us
+4. **Ask a CTS admin to register the image** (see `docs/pattern.md` — regular users cannot register images)
+5. **Create a demo notebook** at `global_share/{your_username}/{toolname}_demo.ipynb` on hub.berdl.kbase.us
 6. **Submit a job** and verify output lands in MinIO
 7. **Write an importer** (PR to `kbase/cdm-spark-events-importers`) to load results into Delta Lake
 
@@ -37,11 +37,10 @@ Demo notebooks and importers live in separate repos (see `docs/pattern.md`).
 
 ---
 
-## Completed Tools
+## Tools Implemented via This Skeleton
 
 | Tool | Repo | Image | Mode | Refdata |
 |------|------|-------|------|---------|
-| checkm2 | [cdm_checkm2](https://github.com/kbasetest/cdm_checkm2) | `ghcr.io/kbasetest/cdm_checkm2:0.3.0` | genome quality | yes |
 | mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `ghcr.io/kbaseincubator/cdm_mmseqs2:0.1.0` | easy-cluster | no |
 
 ## Planned Tools

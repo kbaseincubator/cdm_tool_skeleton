@@ -83,9 +83,9 @@ Go to `https://github.com/orgs/kbaseincubator/packages/container/{toolname}/sett
 
 ## Step 3: Register the Image
 
-You **cannot** register images yourself (requires `full_admin` role). Ask Gavin:
+Regular users **cannot** register images (requires `full_admin` role). Ask a CTS admin:
 
-> Hey Gavin, can you register this image in CTS?
+> Hi, can you register this image in CTS?
 > `ghcr.io/kbaseincubator/cdm_{toolname}:{ver}@sha256:{manifest_list_digest}`
 > Entrypoint is `{entrypoint}`. {Refdata note: "No refdata needed" or "Needs refdata at /ref_data/..."}.
 > Usage note: {one sentence on how to use it}.
@@ -101,7 +101,7 @@ curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_{
 
 ## Step 4: Demo Notebook on berdl.kbase.us
 
-Create `global_share/jplfaria/{toolname}_demo.ipynb`.
+Create `global_share/{your_username}/{toolname}_demo.ipynb`.
 
 ### Standard notebook structure
 
@@ -118,7 +118,7 @@ print(f"{len(input_files)} files:", *input_files, sep="\n")
 
 # Cell 3: Submit job
 IMAGE = "ghcr.io/kbaseincubator/cdm_{toolname}:{ver}@sha256:{digest}"
-OUTPUT_DIR = "cts/io/jplfaria/output/{toolname}/test/v1"
+OUTPUT_DIR = "cts/io/{your_username}/output/{toolname}/test/v1"
 
 job = tscli.submit_job(
     IMAGE,
@@ -161,7 +161,7 @@ for o in job.get_job()["outputs"]:
 
 ### Output path with `declobber=True`
 
-Files land at: `cts/io/jplfaria/output/{toolname}/test/v1/{container_num}/{filename}`
+Files land at: `cts/io/{your_username}/output/{toolname}/test/v1/{container_num}/{filename}`
 
 ---
 
@@ -269,8 +269,8 @@ importer_meta:
 | CTS API | `https://berdl.kbase.us/apis/cts/` |
 | MinIO bucket | `cts` — write path `cts/io/` |
 | Input test files | `cts/io/gavin/test_files/` (4 genomes with CRC64NVME checksums) |
-| José output path | `cts/io/jplfaria/output/{toolname}/` |
-| Delta Lake tables | `u_jplfaria__autoimport.{toolname}` (after importer deployed) |
+| José output path | `cts/io/{your_username}/output/{toolname}/` |
+| Delta Lake tables | `u_{your_username}__autoimport.{toolname}` (after importer deployed) |
 
 ---
 
