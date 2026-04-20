@@ -1,0 +1,16 @@
+# Copy to kbase/cdm-spark-events-importers/cdmeventimporters/{toolname}.yaml
+
+# The name of the importer. Informational purposes only.
+name: toolname  # TODO: replace
+
+# The location of the importer module containing the run_import method.
+py_module: cdmeventimporters.toolname  # TODO: replace
+
+# The CTS image this importer is triggered by.
+# The importer runs automatically when a job using this image completes.
+image: ghcr.io/kbaseincubator/cdm_toolname  # TODO: replace (no tag — matches any version)
+
+# Metadata passed to run_import() as the metadata argument.
+importer_meta:
+    # Delta Lake table to write to (without the per-user namespace prefix).
+    deltatable: autoimport.toolname_results  # TODO: replace
