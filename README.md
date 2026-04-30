@@ -48,12 +48,12 @@ Status legend:
 
 | Tool | Repo | Image | Refdata | Status |
 |------|------|-------|---------|--------|
-| mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `0.1.0` | no | Live (importer PR #35 pending merge in cdm-spark-events-importers) |
+| mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `0.1.0` | no | Live, importer pending merge ([PR #35](https://github.com/kbase/cdm-spark-events-importers/pull/35)) |
 | kofamscan | [cdm_kofamscan](https://github.com/kbaseincubator/cdm_kofamscan) | `0.1.0` | KEGG HMMs (~1.5GB bundled, staged at `cts/io/jplfaria/refdata_staging/kofam/`) | Awaiting registration |
 | bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.0` | Bakta DB v6 full (~30GB bundled, staged at `cts/io/jplfaria/refdata_staging/bakta/`) | Awaiting registration |
 | gtdbtk | — | — | ~100GB taxonomy DB | Planned |
 | eggNOG | — | — | eggNOG DB | Planned |
-| RAST | — | — | none | Planned (custom container — talk to Bill) |
+| RAST | — | — | none | Planned (custom container, talk to Bill) |
 | psortb | — | — | none | Planned |
 | transyt | — | — | none | Planned (custom container) |
 | modelseedpy | — | — | none | Planned (ask Chris Henry for container) |
@@ -62,3 +62,22 @@ Status legend:
 External / not built via this skeleton:
 - **checkm2** — `ghcr.io/kbasetest/cdm_checkm2:0.3.0` (Gavin's reference example, predates this skeleton)
 - **InterProScan** — Chris Neely's container (deployed to dev only, currently broken)
+
+---
+
+## Open PRs and Pending Handoffs
+
+Things waiting on someone else. Update as items move.
+
+### Open PRs
+
+| PR | Tool | Description | Owner / waiting on |
+|----|------|-------------|-------------------|
+| [kbase/cdm-spark-events-importers#35](https://github.com/kbase/cdm-spark-events-importers/pull/35) | mmseqs2 | First importer for the cluster TSV output. CI green, ready to merge. | Gavin (review + merge + redeploy event processor) |
+
+### Pending CTS admin (Gavin) registrations
+
+| Tool | What's needed | Staged at |
+|------|---------------|-----------|
+| kofamscan | Move bundle to `cts-refdata`, register refdata, register image with refdata link | `s3://cts/io/jplfaria/refdata_staging/kofam/kofam_refdata.tar.gz` (~1.5GB), image `ghcr.io/kbaseincubator/cdm_kofamscan:0.1.0@sha256:d6b20eccf4c6bf1b095e530844a8b04dbae5fca85daf0c9b2bdffb0cf10a9a42` |
+| bakta | Move bundle to `cts-refdata`, register refdata, register image with refdata link | `s3://cts/io/jplfaria/refdata_staging/bakta/bakta_db.tar.gz` (~30GB), image `ghcr.io/kbaseincubator/cdm_bakta:0.1.0@sha256:6de4c51cadd75bc6a1d9f6e6b05716ecfdcfa63510b82459477ff757200d8d06` |
