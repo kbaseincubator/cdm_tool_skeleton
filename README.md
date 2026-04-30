@@ -37,21 +37,28 @@ Demo notebooks and importers live in separate repos (see `docs/pattern.md`).
 
 ---
 
-## Tools Implemented via This Skeleton
+## Tools Status
 
-| Tool | Repo | Image | Mode | Refdata |
-|------|------|-------|------|---------|
-| mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `ghcr.io/kbaseincubator/cdm_mmseqs2:0.1.0` | easy-cluster | no |
+Status legend:
+- **Live**: image registered in CTS, tested end-to-end, importer deployed
+- **Image registered**: image registered in CTS, demo notebook works, importer in progress
+- **Awaiting registration**: repo + image built and public on GHCR, refdata staged in MinIO if needed, waiting on CTS admin to register
+- **Repo built**: GitHub repo + GHCR image done, no refdata work yet
+- **Planned**: not started
 
-## Planned Tools
+| Tool | Repo | Image | Refdata | Status |
+|------|------|-------|---------|--------|
+| mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `0.1.0` | no | Live (importer PR #35 pending merge in cdm-spark-events-importers) |
+| kofamscan | [cdm_kofamscan](https://github.com/kbaseincubator/cdm_kofamscan) | `0.1.0` | KEGG HMMs (~1.5GB bundled, staged at `cts/io/jplfaria/refdata_staging/kofam/`) | Awaiting registration |
+| bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.0` | Bakta DB v6 full (~30GB bundled, staged at `cts/io/jplfaria/refdata_staging/bakta/`) | Awaiting registration |
+| gtdbtk | — | — | ~100GB taxonomy DB | Planned |
+| eggNOG | — | — | eggNOG DB | Planned |
+| RAST | — | — | none | Planned (custom container — talk to Bill) |
+| psortb | — | — | none | Planned |
+| transyt | — | — | none | Planned (custom container) |
+| modelseedpy | — | — | none | Planned (ask Chris Henry for container) |
+| skani | — | — | optional (refdata for query mode only) | Planned (Filipe asked we leave for last) |
 
-| Tool | Priority | Public Container | Notes |
-|------|----------|-----------------|-------|
-| kofam_scan | 1 | bioconda | KEGG annotations, needs KEGG HMM refdata |
-| gtdbtk | 2 | ecogenomics/gtdbtk | Taxonomy, ~100GB refdata |
-| Bakta | 3 | oschwengers/bakta | Genome annotation, needs Bakta DB |
-| RAST | 4 | custom | Genome annotation |
-| psortb | 5 | bioconda | Protein localization |
-| transyt | 6 | custom | Transport annotation |
-| modelseedpy | 7 | custom (ask Chris Henry) | Metabolic modeling |
-| skani | last | quay.io/biocontainers/skani | ANI — needs refdata for query mode |
+External / not built via this skeleton:
+- **checkm2** — `ghcr.io/kbasetest/cdm_checkm2:0.3.0` (Gavin's reference example, predates this skeleton)
+- **InterProScan** — Chris Neely's container (deployed to dev only, currently broken)
