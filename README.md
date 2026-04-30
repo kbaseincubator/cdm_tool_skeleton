@@ -77,7 +77,9 @@ Things waiting on someone else. Update as items move.
 
 ### Pending CTS admin (Gavin) registrations
 
-| Tool | What's needed | Staged at |
-|------|---------------|-----------|
-| kofamscan | Move bundle to `cts-refdata`, register refdata, register image with refdata link | `s3://cts/io/jplfaria/refdata_staging/kofam/kofam_refdata.tar.gz` (~1.5GB), image `ghcr.io/kbaseincubator/cdm_kofamscan:0.1.0@sha256:d6b20eccf4c6bf1b095e530844a8b04dbae5fca85daf0c9b2bdffb0cf10a9a42` |
-| bakta | Move bundle to `cts-refdata`, register refdata, register image with refdata link | `s3://cts/io/jplfaria/refdata_staging/bakta/bakta_db.tar.gz` (~30GB), image `ghcr.io/kbaseincubator/cdm_bakta:0.1.0@sha256:6de4c51cadd75bc6a1d9f6e6b05716ecfdcfa63510b82459477ff757200d8d06` |
+Refdata path convention (Gavin's): `cts-refdata/{toolname}/{tool_version}/{filename}`
+
+| Tool | Move from | Move to | Image |
+|------|-----------|---------|-------|
+| kofamscan | `cts/io/jplfaria/refdata_staging/kofam/kofam_refdata.tar.gz` (~1.5GB) | `cts-refdata/kofam/1.3.0/kofam_refdata.tar.gz` | `ghcr.io/kbaseincubator/cdm_kofamscan:0.1.0@sha256:d6b20eccf4c6bf1b095e530844a8b04dbae5fca85daf0c9b2bdffb0cf10a9a42` |
+| bakta | `cts/io/jplfaria/refdata_staging/bakta/bakta_db.tar.gz` (~30GB) | `cts-refdata/bakta/1.12.0/bakta_db.tar.gz` | `ghcr.io/kbaseincubator/cdm_bakta:0.1.0@sha256:6de4c51cadd75bc6a1d9f6e6b05716ecfdcfa63510b82459477ff757200d8d06` |

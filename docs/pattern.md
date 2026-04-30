@@ -255,6 +255,7 @@ importer_meta:
 | Make GHCR package public | José (GitHub settings) |
 | Register image in CTS | Gavin only (`full_admin`) |
 | Register refdata in CTS | Gavin only |
+| Refdata path convention | `cts-refdata/{toolname}/{tool_version}/{filename}` (Gavin's convention, e.g. `cts-refdata/checkm2/1.1.0/uniref100.KO.1.dmnd.gz`) |
 | Submit jobs | José (needs `kbase_staff` role) |
 | Write to `cts/io/` | José |
 | Merge importer PRs | Gavin |
