@@ -255,7 +255,7 @@ importer_meta:
 | Make GHCR package public | José (GitHub settings) |
 | Register image in CTS | Gavin only (`full_admin`) |
 | Register refdata in CTS | Gavin only |
-| Refdata path convention | `cts-refdata/{toolname}/{tool_version}/{filename}` (Gavin's convention, e.g. `cts-refdata/checkm2/1.1.0/uniref100.KO.1.dmnd.gz`) |
+| Refdata path convention | `cts-refdata/{toolname}/{refdata_version}/{filename}` — version in the path is the **refdata** version, not the tool version. Same refdata can serve multiple tool versions; CTS tracks (image, refdata) compatibility at registration. For tools without formal refdata versions (e.g. KEGG kofam dumps), use the date pulled from upstream as the version stamp. |
 | Submit jobs | José (needs `kbase_staff` role) |
 | Write to `cts/io/` | José |
 | Merge importer PRs | Gavin |
