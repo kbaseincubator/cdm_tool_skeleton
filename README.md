@@ -77,15 +77,10 @@ Things waiting on someone else. Update as items move.
 
 ### Pending CTS admin (Gavin) registrations
 
-Refdata path convention: `cts-refdata/{toolname}/{refdata_version}/{filename}`
+Tracked as GitHub issues with task list checkboxes the CTS admin ticks off as he completes each step. Templates and archive in [`handoffs/`](handoffs/).
 
-The path version is the **refdata version**, not the tool version. The same refdata can serve multiple tool versions; CTS tracks (image, refdata) compatibility at registration time.
+Currently open:
+- [#1 cdm_kofamscan](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/1) ([template](handoffs/kofamscan.md))
+- [#2 cdm_bakta](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/2) ([template](handoffs/bakta.md))
 
-| Tool | Move from | Move to | Image |
-|------|-----------|---------|-------|
-| kofamscan | `cts/io/jplfaria/refdata_staging/kofam/kofam_refdata.tar.gz` (~1.5GB) | `cts-refdata/kofam/2025-04-30/kofam_refdata.tar.gz` | `ghcr.io/kbaseincubator/cdm_kofamscan:0.1.0@sha256:d6b20eccf4c6bf1b095e530844a8b04dbae5fca85daf0c9b2bdffb0cf10a9a42` |
-| bakta | `cts/io/jplfaria/refdata_staging/bakta/bakta_db.tar.gz` (~30GB) | `cts-refdata/bakta/v6.0/bakta_db.tar.gz` | `ghcr.io/kbaseincubator/cdm_bakta:0.1.0@sha256:6de4c51cadd75bc6a1d9f6e6b05716ecfdcfa63510b82459477ff757200d8d06` |
-
-Refdata version notes:
-- **kofam** uses the date pulled from KEGG FTP (KEGG does not publish formal version numbers for the kofam dump).
-- **bakta** uses the published DB schema version (v6.0, Feb 2025), which is what Bakta 1.12.0 expects.
+Refdata path convention: `cts-refdata/{toolname}/{refdata_version}/{filename}`. The path version is the **refdata version**, not the tool version. See [`handoffs/README.md`](handoffs/README.md) for full conventions and process for adding new handoffs.
