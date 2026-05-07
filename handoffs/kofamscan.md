@@ -1,7 +1,7 @@
 # KofamScan Handoff
 
 **Status:** Open
-**Live issue:** [#1](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/1) (Gavin ticks checkboxes as he completes steps)
+**Live issue:** [#1](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/1) (CTS admin ticks checkboxes as steps complete)
 **Sent:** 2026-04-30 (refdata details), 2026-05-05 (path convention finalized)
 **Completed:** —
 
@@ -26,8 +26,8 @@ ko_list          # KO definitions, gunzipped
 - **Usage note:** Pass `-p /ref_data/profiles -k /ref_data/ko_list` in job args
 - **Repo:** https://github.com/kbaseincubator/cdm_kofamscan
 
-## Confirmation (fill in when Gavin completes)
+## Confirmation (fill in when CTS admin completes)
 
 - Refdata UUID: —
 - Image registered: no
-- Notes: Refdata path convention finalized 2026-05-05 after thread with Gavin (refdata version, not tool version, in the path).
+- Notes: Refdata path convention finalized 2026-05-05 (refdata version, not tool version, in the path).

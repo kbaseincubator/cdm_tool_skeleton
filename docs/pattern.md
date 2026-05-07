@@ -70,11 +70,11 @@ It publishes to `ghcr.io/kbaseincubator/cdm_{toolname}` on every push to main an
 
 **To trigger a versioned build:** `git tag 0.1.0 && git push origin 0.1.0`
 
-**Getting the correct digest for Gavin:**
-After the build succeeds, look in the GitHub Actions log under "Build and push Docker image" → `##[group]Digest`. That is the **manifest list digest** — the one to give Gavin.
+**Getting the correct digest for the CTS admin:**
+After the build succeeds, look in the GitHub Actions log under "Build and push Docker image" → `##[group]Digest`. That is the **manifest list digest** — the one to hand off for registration.
 Alternatively: GitHub Packages web page shows it directly.
 
-> ⚠️ Do NOT use the amd64 sub-manifest digest (different sha256). Give Gavin the manifest list digest.
+> ⚠️ Do NOT use the amd64 sub-manifest digest (different sha256). Hand off the manifest list digest.
 
 **Make the GHCR package public:**
 Go to `https://github.com/orgs/kbaseincubator/packages/container/{toolname}/settings` → Change visibility → Public.
@@ -112,7 +112,7 @@ mincli = get_minio_client()
 print(tscli.whoami())
 
 # Cell 2: List input files
-objs = list(mincli.list_objects("cts", prefix="io/gavin/test_files", recursive=True))
+objs = list(mincli.list_objects("cts", prefix="io/<test-files-prefix>", recursive=True))
 input_files = [f"cts/{o.object_name}" for o in objs]
 print(f"{len(input_files)} files:", *input_files, sep="\n")
 
@@ -251,14 +251,14 @@ importer_meta:
 
 | Action | Who |
 |--------|-----|
-| Build & push container to GHCR | José (via GitHub Actions) |
-| Make GHCR package public | José (GitHub settings) |
-| Register image in CTS | Gavin only (`full_admin`) |
-| Register refdata in CTS | Gavin only |
+| Build & push container to GHCR | Tool author (via GitHub Actions) |
+| Make GHCR package public | Tool author (GitHub settings) |
+| Register image in CTS | CTS admin only (requires `full_admin` role) |
+| Register refdata in CTS | CTS admin only |
 | Refdata path convention | `cts-refdata/{toolname}/{refdata_version}/{filename}` — version in the path is the **refdata** version, not the tool version. Same refdata can serve multiple tool versions; CTS tracks (image, refdata) compatibility at registration. For tools without formal refdata versions (e.g. KEGG kofam dumps), use the date pulled from upstream as the version stamp. |
-| Submit jobs | José (needs `kbase_staff` role) |
-| Write to `cts/io/` | José |
-| Merge importer PRs | Gavin |
+| Submit jobs | Anyone with `kbase_staff` role on berdl |
+| Write to `cts/io/` | Anyone with CTS write permission to that prefix |
+| Merge importer PRs | Repo maintainer of `kbase/cdm-spark-events-importers` |
 
 ---
 
@@ -269,8 +269,8 @@ importer_meta:
 | Active cluster | `kbase` (168 CPUs/node, 990GB RAM, max 10,065 min) |
 | CTS API | `https://berdl.kbase.us/apis/cts/` |
 | MinIO bucket | `cts` — write path `cts/io/` |
-| Input test files | `cts/io/gavin/test_files/` (4 genomes with CRC64NVME checksums) |
-| José output path | `cts/io/{your_username}/output/{toolname}/` |
+| Input test files | shared test genomes in MinIO under `cts/io/<test-files-prefix>/` (4 genomes with CRC64NVME checksums) |
+| Per-user output path | `cts/io/{your_username}/output/{toolname}/` |
 | Delta Lake tables | `u_{your_username}__autoimport.{toolname}` (after importer deployed) |
 
 ---

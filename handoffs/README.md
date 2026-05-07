@@ -3,9 +3,9 @@
 Two pieces work together:
 
 1. **Markdown templates** in this folder ({toolname}.md) — full canonical instruction text. Stable URLs you can link to.
-2. **GitHub issues** in this repo with checklists — live status. The CTS admin (Gavin) ticks the boxes directly in the GitHub UI as he completes each step. Replace Slack-thread tracking.
+2. **GitHub issues** in this repo with checklists — live status. The CTS admin ticks the boxes directly in the GitHub UI as each step completes. Replaces Slack-thread tracking.
 
-When asking Gavin to do a registration: open a new issue from the template below, ping him with a link to the issue. He clicks checkboxes; we close when all boxes are ticked and the refdata UUID is posted as a comment.
+To request a registration: open a new issue from the template below, ping the CTS admin with a link to the issue. They click checkboxes; we close when all boxes are ticked and the refdata UUID is posted as a comment.
 
 ## Open handoffs
 
@@ -19,7 +19,7 @@ When asking Gavin to do a registration: open a new issue from the template below
 1. Copy `_template.md` to `{toolname}.md`, fill in the details
 2. Open a new GitHub issue using the issue template format (see #1 or #2 as examples)
 3. Add a row to the table above
-4. Send Gavin a Slack message with the issue link
+4. Send the CTS admin a message with the issue link
 
 ## Conventions reminder
 

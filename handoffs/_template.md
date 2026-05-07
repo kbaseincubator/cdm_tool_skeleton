@@ -24,8 +24,8 @@ Bundle structure (after CTS unpacks):
 - **Usage note:** `{one sentence on how callers should pass refdata flags in job args}`
 - **Repo:** https://github.com/kbaseincubator/cdm_{tool}
 
-## Confirmation (fill in when Gavin completes)
+## Confirmation (fill in when CTS admin completes)
 
-- Refdata UUID: `<paste UUID Gavin returns>`
+- Refdata UUID: `<paste returned UUID>`
 - Image registered: yes/no
 - Notes: `<any quirks or follow-ups>`

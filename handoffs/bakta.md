@@ -1,7 +1,7 @@
 # Bakta Handoff
 
 **Status:** Open
-**Live issue:** [#2](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/2) (Gavin ticks checkboxes as he completes steps)
+**Live issue:** [#2](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/2) (CTS admin ticks checkboxes as steps complete)
 **Sent:** 2026-05-05
 **Completed:** —
 
@@ -25,8 +25,8 @@ db/              # Bakta DB v6.0 full directory (UniRef100 + UniRef90 + UniRef50
 - **Usage note:** Pass `--db /ref_data/db --output /out --threads N <input.fasta>` in job args
 - **Repo:** https://github.com/kbaseincubator/cdm_bakta
 
-## Confirmation (fill in when Gavin completes)
+## Confirmation (fill in when CTS admin completes)
 
 - Refdata UUID: —
 - Image registered: no
-- Notes: Bakta uses only the bakta refdata (clarified after kofam thread).
+- Notes: Bakta uses only the bakta refdata.
