@@ -13,6 +13,7 @@ To request a registration: open a new issue from the template below, ping the CT
 |------|-------|----------|
 | kofamscan | [#1](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/1) | [kofamscan.md](kofamscan.md) |
 | bakta | [#2](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/2) | [bakta.md](bakta.md) |
+| psortb | [#3](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/3) | [psortb.md](psortb.md) |
 
 ## How to add a new handoff
 

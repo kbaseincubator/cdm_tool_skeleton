@@ -51,10 +51,10 @@ Status legend:
 | mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `0.1.0` | no | Live, importer pending merge ([PR #35](https://github.com/kbase/cdm-spark-events-importers/pull/35)) |
 | kofamscan | [cdm_kofamscan](https://github.com/kbaseincubator/cdm_kofamscan) | `0.1.0` | KEGG HMMs (~1.5GB bundled, staged at `cts/io/jplfaria/refdata_staging/kofam/`) | Awaiting registration |
 | bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.0` | Bakta DB v6 full (~30GB bundled, staged at `cts/io/jplfaria/refdata_staging/bakta/`) | Awaiting registration |
+| psortb | [cdm_psortb](https://github.com/kbaseincubator/cdm_psortb) | `0.1.0` | none (bundled in image) | Awaiting registration |
 | gtdbtk | — | — | ~100GB taxonomy DB | Planned |
 | eggNOG | — | — | eggNOG DB | Planned |
 | RAST | — | — | none | Planned (custom container, needs upstream coordination) |
-| psortb | — | — | none | Planned |
 | transyt | — | — | none | Planned (custom container) |
 | modelseedpy | — | — | none | Planned (custom container from upstream maintainer) |
 | skani | — | — | optional (refdata for query mode only) | Planned (deferred per scientific priorities) |
@@ -82,5 +82,6 @@ Tracked as GitHub issues with task list checkboxes the CTS admin ticks off as ea
 Currently open:
 - [#1 cdm_kofamscan](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/1) ([template](handoffs/kofamscan.md))
 - [#2 cdm_bakta](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/2) ([template](handoffs/bakta.md))
+- [#3 cdm_psortb](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/3) ([template](handoffs/psortb.md))
 
 Refdata path convention: `cts-refdata/{toolname}/{refdata_version}/{filename}`. The path version is the **refdata version**, not the tool version. See [`handoffs/README.md`](handoffs/README.md) for full conventions and process for adding new handoffs.
