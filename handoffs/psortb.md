@@ -1,9 +1,9 @@
 # PSORTb Handoff
 
-**Status:** Open
-**Live issue:** [#3](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/3) (CTS admin ticks checkboxes as steps complete)
+**Status:** Registered (pending issue close)
+**Live issue:** [#3](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/3)
 **Sent:** 2026-05-07
-**Completed:** —
+**Completed:** 2026-05-07 (image registered; pending verification + issue close)
 
 ## Refdata move + registration
 
@@ -17,7 +17,16 @@ Not applicable. PSORTb's models and SCL databases are bundled inside the base co
 - **Usage note:** Pass an organism flag (`--positive`, `--negative`, or `--archaea`), an output format flag (`--output terse|normal|long`), and the input protein FASTA. Models are bundled in the image.
 - **Repo:** https://github.com/kbaseincubator/cdm_psortb
 
-## Confirmation (fill in when CTS admin completes)
+## Verification
 
-- Image registered: no
-- Notes: No refdata; this is a single-step image registration only.
+After registration, confirm visibility via the CTS API:
+
+```bash
+curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_psortb%3A0.1.0" \
+  -H "Authorization: Bearer $KBASE_TOKEN" | jq
+```
+
+## Confirmation
+
+- Image registered: yes
+- Notes: No refdata; single-step image registration only.

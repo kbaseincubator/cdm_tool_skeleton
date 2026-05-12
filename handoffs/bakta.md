@@ -1,9 +1,9 @@
 # Bakta Handoff
 
-**Status:** Open
-**Live issue:** [#2](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/2) (CTS admin ticks checkboxes as steps complete)
+**Status:** Registered (pending issue close)
+**Live issue:** [#2](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/2)
 **Sent:** 2026-05-05
-**Completed:** —
+**Completed:** 2026-05-07 (all admin steps done; pending verification + issue close)
 
 ## Refdata move + registration
 
@@ -25,8 +25,22 @@ db/              # Bakta DB v6.0 full directory (UniRef100 + UniRef90 + UniRef50
 - **Usage note:** Pass `--db /ref_data/db --output /out --threads N <input.fasta>` in job args
 - **Repo:** https://github.com/kbaseincubator/cdm_bakta
 
-## Confirmation (fill in when CTS admin completes)
+## Verification
 
-- Refdata UUID: —
-- Image registered: no
+After registration, confirm visibility via the CTS API:
+
+```bash
+curl -s "https://berdl.kbase.us/apis/cts/refdata/" -H "Authorization: Bearer $KBASE_TOKEN" \
+  | jq '.refdata[] | select(.file | test("bakta"))'
+
+curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_bakta%3A0.1.0" \
+  -H "Authorization: Bearer $KBASE_TOKEN" | jq
+```
+
+## Confirmation
+
+- Refdata UUID: `663783c1-961a-492f-834f-4755914dc92a`
+- Refdata file: `cts-refdata/bakta/v6.0/bakta_db.tar.gz` (45.9 GB)
+- Image registered: yes (linked to refdata UUID, default mount `/ref_data`)
+- Refdata staging on cluster `kbase`: complete (took ~24 min to stage)
 - Notes: Bakta uses only the bakta refdata.

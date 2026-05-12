@@ -19,13 +19,25 @@ Bundle structure (after CTS unpacks):
 ## Image registration
 
 - **Image ID:** `ghcr.io/kbaseincubator/cdm_{tool}:VERSION@sha256:DIGEST`
-- **Entrypoint:** `{entrypoint command, no subcommand}`
+- **Entrypoint** (informational — CTS reads it from the image automatically): `{entrypoint command, no subcommand}`
 - **Default refdata mount point:** `/ref_data`
 - **Usage note:** `{one sentence on how callers should pass refdata flags in job args}`
 - **Repo:** https://github.com/kbaseincubator/cdm_{tool}
 
+## Verification
+
+After registration, confirm visibility via the CTS API:
+
+```bash
+curl -s "https://berdl.kbase.us/apis/cts/refdata/" -H "Authorization: Bearer $KBASE_TOKEN" \
+  | jq '.refdata[] | select(.file | test("{tool}"))'
+
+curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_{tool}%3AVERSION" \
+  -H "Authorization: Bearer $KBASE_TOKEN" | jq
+```
+
 ## Confirmation (fill in when CTS admin completes)
 
-- Refdata UUID: `<paste returned UUID>`
+- Refdata UUID: `<paste returned UUID, or look up via API>`
 - Image registered: yes/no
 - Notes: `<any quirks or follow-ups>`

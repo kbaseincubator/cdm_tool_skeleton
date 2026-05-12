@@ -1,9 +1,9 @@
 # KofamScan Handoff
 
-**Status:** Open
-**Live issue:** [#1](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/1) (CTS admin ticks checkboxes as steps complete)
+**Status:** Registered (pending issue close)
+**Live issue:** [#1](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/1)
 **Sent:** 2026-04-30 (refdata details), 2026-05-05 (path convention finalized)
-**Completed:** —
+**Completed:** 2026-05-07 (all admin steps done; pending verification + issue close)
 
 ## Refdata move + registration
 
@@ -26,8 +26,22 @@ ko_list          # KO definitions, gunzipped
 - **Usage note:** Pass `-p /ref_data/profiles -k /ref_data/ko_list` in job args
 - **Repo:** https://github.com/kbaseincubator/cdm_kofamscan
 
-## Confirmation (fill in when CTS admin completes)
+## Verification
 
-- Refdata UUID: —
-- Image registered: no
+After registration, confirm visibility via the CTS API:
+
+```bash
+curl -s "https://berdl.kbase.us/apis/cts/refdata/" -H "Authorization: Bearer $KBASE_TOKEN" \
+  | jq '.refdata[] | select(.file | test("kofam"))'
+
+curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_kofamscan%3A0.1.0" \
+  -H "Authorization: Bearer $KBASE_TOKEN" | jq
+```
+
+## Confirmation
+
+- Refdata UUID: `84b31af0-a5a7-4016-906c-9ad9eef34c6a`
+- Refdata file: `cts-refdata/kofam/2025-04-30/kofam_refdata.tar.gz`
+- Image registered: yes (linked to refdata UUID, default mount `/ref_data`)
+- Refdata staging on cluster `kbase`: complete
 - Notes: Refdata path convention finalized 2026-05-05 (refdata version, not tool version, in the path).
