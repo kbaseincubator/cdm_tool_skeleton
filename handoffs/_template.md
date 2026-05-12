@@ -21,7 +21,7 @@ Bundle structure (after CTS unpacks):
 - **Image ID:** `ghcr.io/kbaseincubator/cdm_{tool}:VERSION@sha256:DIGEST`
 - **Entrypoint** (informational — CTS reads it from the image automatically): `{entrypoint command, no subcommand}`
 - **Default refdata mount point:** `/ref_data`
-- **Usage note:** `{one sentence on how callers should pass refdata flags in job args}`
+- **Usage note:** `{required args (refdata flags + output dir + threads). Reminder: input files must come from the input-files placeholder (tscli.insert_files() in the Python client), NOT literal filenames in args. If the tool processes one input per invocation, callers should set num_containers = number of inputs.}`
 - **Repo:** https://github.com/kbaseincubator/cdm_{tool}
 
 ## Verification

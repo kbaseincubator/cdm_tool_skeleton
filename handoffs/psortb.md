@@ -14,7 +14,7 @@ Not applicable. PSORTb's models and SCL databases are bundled inside the base co
 - **Image ID:** `ghcr.io/kbaseincubator/cdm_psortb:0.1.0@sha256:92bb6db4799b25a75e4738d01f384b512b1c45092ee6c5a487eefa477c455888`
 - **Entrypoint:** `/usr/local/psortb/bin/psort`
 - **Default refdata mount point:** none
-- **Usage note:** Pass an organism flag (`--positive`, `--negative`, or `--archaea`), an output format flag (`--output terse|normal|long`), and the input protein FASTA. Models are bundled in the image.
+- **Usage note:** Required args: an organism flag (`--positive`, `--negative`, or `--archaea`) and an output format (`--output terse|normal|long`). Input protein FASTA must be passed via the input-files placeholder (`tscli.insert_files()` in the Python client) — do NOT include literal filenames in args (breaks multi-file jobs). PSORTb processes one FASTA per invocation, so for N inputs set `num_containers=N`. Output is written automatically to `/out/<input-basename>.psortb.tsv` by the wrapper. Models are bundled in the image.
 - **Repo:** https://github.com/kbaseincubator/cdm_psortb
 
 ## Verification

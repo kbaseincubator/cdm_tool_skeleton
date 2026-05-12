@@ -22,7 +22,7 @@ db/              # Bakta DB v6.0 full directory (UniRef100 + UniRef90 + UniRef50
 - **Image ID:** `ghcr.io/kbaseincubator/cdm_bakta:0.1.0@sha256:6de4c51cadd75bc6a1d9f6e6b05716ecfdcfa63510b82459477ff757200d8d06`
 - **Entrypoint:** `bakta` (no subcommand)
 - **Default refdata mount point:** `/ref_data`
-- **Usage note:** Pass `--db /ref_data/db --output /out --threads N <input.fasta>` in job args
+- **Usage note:** Required args `--db /ref_data/db --output /out --threads N`. Input genomes must be passed via the input-files placeholder (`tscli.insert_files()` in the Python client) — do NOT include literal filenames in args (breaks multi-file jobs). Bakta processes one genome per invocation, so for N inputs set `num_containers=N`.
 - **Repo:** https://github.com/kbaseincubator/cdm_bakta
 
 ## Verification
