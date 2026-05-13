@@ -61,16 +61,16 @@ Status legend:
 
 ### Demo notebooks
 
-Each registered tool ships with a demo notebook on hub.berdl.kbase.us showing the end-to-end submit/poll/consume flow against shared test inputs. These are reference implementations for the build/deploy lifecycle: when wrapping a new tool, use the closest demo as a template.
+Each registered tool ships with an executed demo notebook in its own repo, showing the end-to-end submit/poll/consume flow against shared test inputs with cell outputs preserved. GitHub renders these inline so anyone can read them without logging into berdl. They are the reference implementations for the build/deploy lifecycle: when wrapping a new tool, copy the closest one as a template.
 
 | Tool | Demo notebook |
 |------|---------------|
-| mmseqs2 | [`global_share/jplfaria/mmseqs2_demo.ipynb`](https://hub.berdl.kbase.us/user/jplfaria/lab/tree/global_share/jplfaria/mmseqs2_demo.ipynb) |
-| kofamscan | [`global_share/jplfaria/kofamscan_demo.ipynb`](https://hub.berdl.kbase.us/user/jplfaria/lab/tree/global_share/jplfaria/kofamscan_demo.ipynb) |
-| bakta | [`global_share/jplfaria/bakta_demo.ipynb`](https://hub.berdl.kbase.us/user/jplfaria/lab/tree/global_share/jplfaria/bakta_demo.ipynb) |
-| psortb | [`global_share/jplfaria/psortb_demo.ipynb`](https://hub.berdl.kbase.us/user/jplfaria/lab/tree/global_share/jplfaria/psortb_demo.ipynb) |
+| mmseqs2 | [`cdm_mmseqs2/demo.ipynb`](https://github.com/kbaseincubator/cdm_mmseqs2/blob/main/demo.ipynb) |
+| kofamscan | [`cdm_kofamscan/demo.ipynb`](https://github.com/kbaseincubator/cdm_kofamscan/blob/main/demo.ipynb) |
+| bakta | [`cdm_bakta/demo.ipynb`](https://github.com/kbaseincubator/cdm_bakta/blob/main/demo.ipynb) |
+| psortb | [`cdm_psortb/demo.ipynb`](https://github.com/kbaseincubator/cdm_psortb/blob/main/demo.ipynb) |
 
-The links open under one user's hub. To open in your own, swap `jplfaria` in the URL for your username, or just navigate to the same `global_share/jplfaria/...` path inside JupyterLab once logged in.
+To run a demo yourself, open the corresponding notebook from `global_share/jplfaria/` on hub.berdl.kbase.us (these copies are kept in sync with the per-repo versions).
 
 External / not built via this skeleton:
 - **checkm2** — `ghcr.io/kbasetest/cdm_checkm2:0.3.0` (existing reference example, predates this skeleton)
