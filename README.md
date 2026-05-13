@@ -51,7 +51,7 @@ Status legend:
 | mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `0.1.0` | no | Live end-to-end. Importer PR pending merge ([cdm-spark-events-importers#35](https://github.com/kbase/cdm-spark-events-importers/pull/35)). |
 | kofamscan | [cdm_kofamscan](https://github.com/kbaseincubator/cdm_kofamscan) | `0.1.0` | `cts-refdata/kofam/2025-04-30/kofam_refdata.tar.gz` (UUID `84b31af0-…`) | Live end-to-end (demo notebook produces 147K KO annotations). Importer optional, deferred. |
 | bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.2` | `cts-refdata/bakta/v6.0/bakta_db.tar.gz` (UUID `663783c1-…`) | Image works (CDS prediction succeeds). Refdata's bundled AMRFinderPlus DB is incompatible with the bakta binary; refresh staged at `v6.0_amr20260324/`, awaiting CTS admin re-register ([#8](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/8)). |
-| psortb | [cdm_psortb](https://github.com/kbaseincubator/cdm_psortb) | `0.1.2` | none (bundled in image) | Image registered. End-to-end CTS verification in progress ([#7](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/7)). 0.1.0 and 0.1.1 are obsolete (broken). |
+| psortb | [cdm_psortb](https://github.com/kbaseincubator/cdm_psortb) | `0.1.2` | none (bundled in image) | Live end-to-end (verified on CTS: 583 protein localization predictions). 0.1.0 and 0.1.1 are obsolete (broken). |
 | gtdbtk | — | — | ~100GB taxonomy DB | Planned |
 | eggNOG | — | — | eggNOG DB | Planned |
 | RAST | — | — | none | Planned (custom container, needs upstream coordination) |
@@ -80,7 +80,6 @@ Things waiting on others. Update as items move.
 Tracked as GitHub issues with task list checkboxes the CTS admin ticks off as each step completes. Templates and archive in [`handoffs/`](handoffs/).
 
 Currently open:
-- [#7 cdm_psortb 0.1.2 verification](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/7) — image registered, end-to-end CTS test pending
 - [#8 bakta refdata v6.0_amr20260324](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/8) — needs refdata move + register + relink to existing `cdm_bakta:0.1.2` image
 
 Recently closed (image fixes that are now in CTS):
