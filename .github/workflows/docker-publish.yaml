@@ -3,18 +3,23 @@
 name: Docker
 
 on:
+  # On the skeleton repo itself the Dockerfile is a placeholder
+  # (FROM replaceme/tool:version) so auto-builds will always fail. Only
+  # workflow_dispatch is wired up here. When you copy this repo to wrap a
+  # real tool, replace the placeholder FROM line in Dockerfile and uncomment
+  # the push / pull_request / release triggers below.
   workflow_dispatch:
-  push:
-    branches: [ "main", "master", "develop" ]
-    # Publish semver tags as releases.
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
-      - '[0-9]+.[0-9]+.[0-9]+'
-      - '[0-9]+.[0-9]+.[0-9]+-*'
-  pull_request:
-    branches: [ "main", "master", "develop" ]
-  release:
-    types: [published]
+  # push:
+  #   branches: [ "main", "master", "develop" ]
+  #   # Publish semver tags as releases.
+  #   tags:
+  #     - 'v[0-9]+.[0-9]+.[0-9]+'
+  #     - '[0-9]+.[0-9]+.[0-9]+'
+  #     - '[0-9]+.[0-9]+.[0-9]+-*'
+  # pull_request:
+  #   branches: [ "main", "master", "develop" ]
+  # release:
+  #   types: [published]
 
 env:
   REGISTRY: ghcr.io
