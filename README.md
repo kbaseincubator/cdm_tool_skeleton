@@ -95,11 +95,6 @@ Tracked as GitHub issues with task list checkboxes the CTS admin ticks off as ea
 Currently open:
 - [#8 bakta refdata v6.0_amr20260324](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/8) — needs refdata move + register + relink to existing `cdm_bakta:0.1.2` image
 
-Recently closed (image fixes that are now in CTS):
-- #1 kofamscan original setup
-- #2 / #4 / #6 bakta image-fix iterations (final image is 0.1.2)
-- #3 / #5 psortb image-fix iterations (final image is 0.1.2 in #7)
-
 Refdata path convention: `cts-refdata/{toolname}/{refdata_version}/{filename}`. The path version is the **refdata version**, not the tool version. See [`handoffs/README.md`](handoffs/README.md) for full conventions and process for adding new handoffs.
 
 **Source of truth for what is actually registered**: query the CTS API directly at [`GET /refdata/`](https://berdl.kbase.us/apis/cts/docs#/Reference%20Data/get_refdata_refdata_get) and [`GET /images/{image_id}`](https://berdl.kbase.us/apis/cts/docs). The tables above describe intent; the API describes reality.
