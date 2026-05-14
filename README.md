@@ -59,6 +59,19 @@ Status legend:
 | modelseedpy | — | — | none | Planned (custom container from upstream maintainer) |
 | skani | — | — | optional (refdata for query mode only) | Planned (deferred per scientific priorities) |
 
+### Demo notebooks
+
+Each registered tool ships with an executed demo notebook in its own repo, showing the end-to-end submit/poll/consume flow against shared test inputs with cell outputs preserved. GitHub renders these inline so anyone can read them without logging into berdl. They are the reference implementations for the build/deploy lifecycle: when wrapping a new tool, copy the closest one as a template.
+
+| Tool | Demo notebook |
+|------|---------------|
+| mmseqs2 | [`cdm_mmseqs2/demo.ipynb`](https://github.com/kbaseincubator/cdm_mmseqs2/blob/main/demo.ipynb) |
+| kofamscan | [`cdm_kofamscan/demo.ipynb`](https://github.com/kbaseincubator/cdm_kofamscan/blob/main/demo.ipynb) |
+| bakta | [`cdm_bakta/demo.ipynb`](https://github.com/kbaseincubator/cdm_bakta/blob/main/demo.ipynb) |
+| psortb | [`cdm_psortb/demo.ipynb`](https://github.com/kbaseincubator/cdm_psortb/blob/main/demo.ipynb) |
+
+To run a demo yourself, open the corresponding notebook from `global_share/jplfaria/` on hub.berdl.kbase.us (these copies are kept in sync with the per-repo versions).
+
 External / not built via this skeleton:
 - **checkm2** — `ghcr.io/kbasetest/cdm_checkm2:0.3.0` (existing reference example, predates this skeleton)
 - **InterProScan** — external container (deployed to dev only, currently broken)
@@ -81,11 +94,6 @@ Tracked as GitHub issues with task list checkboxes the CTS admin ticks off as ea
 
 Currently open:
 - [#8 bakta refdata v6.0_amr20260324](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/8) — needs refdata move + register + relink to existing `cdm_bakta:0.1.2` image
-
-Recently closed (image fixes that are now in CTS):
-- #1 kofamscan original setup
-- #2 / #4 / #6 bakta image-fix iterations (final image is 0.1.2)
-- #3 / #5 psortb image-fix iterations (final image is 0.1.2 in #7)
 
 Refdata path convention: `cts-refdata/{toolname}/{refdata_version}/{filename}`. The path version is the **refdata version**, not the tool version. See [`handoffs/README.md`](handoffs/README.md) for full conventions and process for adding new handoffs.
 
