@@ -50,7 +50,7 @@ Status legend:
 |------|------|-------|---------|--------|
 | mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `0.1.0` | no | Live end-to-end. Importer PR pending merge ([cdm-spark-events-importers#35](https://github.com/kbase/cdm-spark-events-importers/pull/35)). |
 | kofamscan | [cdm_kofamscan](https://github.com/kbaseincubator/cdm_kofamscan) | `0.1.0` | `cts-refdata/kofam/2025-04-30/kofam_refdata.tar.gz` (UUID `84b31af0-…`) | Live end-to-end (demo notebook produces 147K KO annotations). Importer optional, deferred. |
-| bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.2` | `cts-refdata/bakta/v6.0/bakta_db.tar.gz` (UUID `663783c1-…`) | Image works (CDS prediction succeeds). Refdata's bundled AMRFinderPlus DB is incompatible with the bakta binary; refresh staged at `v6.0_amr20260324/`, awaiting CTS admin re-register ([#8](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/8)). |
+| bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.2` | `cts-refdata/bakta/v6.0_amr20260324/bakta_db.tar.gz` (UUID `30f8ba11-…`) | Live end-to-end (verified on CTS: full bakta annotation in 10 min on a 1.9MB / 1999 CDS genome, AMRFinderPlus v4.2.7 runs cleanly against the refreshed DB). Importer optional, deferred. |
 | psortb | [cdm_psortb](https://github.com/kbaseincubator/cdm_psortb) | `0.1.2` | none (bundled in image) | Live end-to-end (verified on CTS: 583 protein localization predictions). 0.1.0 and 0.1.1 are obsolete (broken). |
 | gtdbtk | — | — | ~100GB taxonomy DB | Planned |
 | eggNOG | — | — | eggNOG DB | Planned |
@@ -92,8 +92,7 @@ Things waiting on others. Update as items move.
 
 Tracked as GitHub issues with task list checkboxes the CTS admin ticks off as each step completes. Templates and archive in [`handoffs/`](handoffs/).
 
-Currently open:
-- [#8 bakta refdata v6.0_amr20260324](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/8) — needs refdata move + register + relink to existing `cdm_bakta:0.1.2` image
+Currently open: none.
 
 Refdata path convention: `cts-refdata/{toolname}/{refdata_version}/{filename}`. The path version is the **refdata version**, not the tool version. See [`handoffs/README.md`](handoffs/README.md) for full conventions and process for adding new handoffs.
 
