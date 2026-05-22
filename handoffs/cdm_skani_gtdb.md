@@ -16,7 +16,7 @@ Skani ANI calculator pre-paired with the **GTDB R232 reference sketches**. Lets 
 
 The skani sketches that live inside that bundle were built by GTDB-Tk 2.7.2 using skani 0.3.1, which is exactly the skani binary baked into this image (copied multi-stage from `ecogenomic/gtdbtk:2.7.2`), so sketch-format compatibility is guaranteed by construction.
 
-Inside the bundle, the skani sketch directory is at `/ref_data/release232/skani/` (the bundle has a top-level `release232/` wrapper that CTS does not strip, same as for cdm_gtdbtk).
+Inside the bundle, the skani sketch directory is at `/ref_data/release232/skani/database/` (the bundle has a top-level `release232/` wrapper that CTS does not strip, same as for cdm_gtdbtk).
 
 ### Why R232 and not skani's pre-sketched R226
 
@@ -27,7 +27,7 @@ Skani publishes a pre-sketched GTDB DB at `http://faust.compbio.cs.cmu.edu/skani
 - **Image ID:** `ghcr.io/kbaseincubator/cdm_skani_gtdb:0.1.0@sha256:682e6d44512cb8911d05459d00dd947ad7d71ebb28c380aaaae6a2a5efe856c5`
 - **Entrypoint:** `skani` (no subcommand)
 - **Default refdata mount point:** `/ref_data` (refdata bundle UUID `bb6352b4-b86f-4e3d-a858-4bc77327ab13`, same as cdm_gtdbtk)
-- **Usage note:** Typical invocation is `args=["search", "-d", "/ref_data/release232/skani/", "-o", "/out/hits.tsv", "-t", "4", "-n", "10", "--short-header", tscli.insert_files()]`. User query genomes via the input-files placeholder, NOT literal filenames. We deliberately do NOT bake `-d /ref_data/release232/skani/` into the image as a default so a future GTDB release (R233+) only needs a new refdata bundle registration, not a new image build.
+- **Usage note:** Typical invocation is `args=["search", "-d", "/ref_data/release232/skani/database/", "-o", "/out/hits.tsv", "-t", "4", "-n", "10", "--short-header", tscli.insert_files()]`. User query genomes via the input-files placeholder, NOT literal filenames. We deliberately do NOT bake `-d /ref_data/release232/skani/database/` into the image as a default so a future GTDB release (R233+) only needs a new refdata bundle registration, not a new image build.
 - **Repo:** https://github.com/kbaseincubator/cdm_skani_gtdb
 
 ## Verification (before this handoff was opened)
@@ -43,7 +43,7 @@ curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_s
   -H "Authorization: Bearer $KBASE_TOKEN" | jq
 ```
 
-Then a minimal end-to-end CTS job from a notebook: submit one of the existing test genomes (e.g. `GCA_000147015.1_ASM14701v1_genomic.fna.gz`) with `args=["search", "-d", "/ref_data/release232/skani/", "-o", "/out/hits.tsv", "-t", "4", "-n", "5", "--short-header", tscli.insert_files()]`. Expect ~5 GTDB representative hits including `GCA_000147015.1` at ANI 100% (it IS the GTDB rep for *Zinderia insecticola*).
+Then a minimal end-to-end CTS job from a notebook: submit one of the existing test genomes (e.g. `GCA_000147015.1_ASM14701v1_genomic.fna.gz`) with `args=["search", "-d", "/ref_data/release232/skani/database/", "-o", "/out/hits.tsv", "-t", "4", "-n", "5", "--short-header", tscli.insert_files()]`. Expect ~5 GTDB representative hits including `GCA_000147015.1` at ANI 100% (it IS the GTDB rep for *Zinderia insecticola*).
 
 ## Confirmation (fill in when CTS admin completes)
 
