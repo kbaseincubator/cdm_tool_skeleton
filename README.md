@@ -20,6 +20,32 @@ See `docs/pattern.md` for the full pattern with examples.
 
 ---
 
+## One image vs. multiple sibling images
+
+Before creating a new tool repo, decide whether the tool needs a single image (the default) or a pair / set of sibling images each registered separately in CTS.
+
+**Use sibling images when EITHER applies:**
+
+1. **Upstream ships multiple binaries** that take different inputs or do different things. Wrap each binary as its own image.
+   - Live example: `cdm_bakta` wraps the `bakta` binary (nucleotide assembly in, predicts genes); `cdm_bakta_proteins` wraps the `bakta_proteins` binary (protein FASTA in, preserves caller's locus tags). Same upstream package, two distinct commands, so two registered images.
+
+2. **Same binary, two different use cases with different reference-data requirements.** Most often: a "use this tool on user input alone" mode (no refdata) vs a "search user input against a fixed reference panel" mode (large refdata).
+   - Planned: `cdm_mmseqs2` (already live, no refdata, `easy-cluster` on user proteins) vs `cdm_mmseqs2_gtdb` (new, with a pre-built GTDB protein DB as refdata, `easy-search`).
+   - Planned: `cdm_skani` (no refdata, pairwise on user genomes) vs `cdm_skani_gtdb` (with pre-built GTDB sketches as refdata, ANI against the GTDB representative panel).
+
+**Stay with a single image when:**
+
+- The tool always needs the same reference data regardless of how it's used (e.g., `cdm_gtdbtk` always needs the GTDB-Tk DB; there is no useful "without refdata" mode).
+- Different invocations differ only by argv flags that don't change the refdata requirement. Let the caller pass those at submit time rather than baking a second image.
+
+**Why split rather than handle modes with argv flags?**
+
+- CTS registers each (image, refdata) pair once with its own usage notes. Two registered tools is cleaner provenance than one tool whose docs say "if mode A use refdata X, if mode B use refdata Y."
+- Different refdata bundles are distinct registered entities in CTS, each with its own UUID. A single image with multiple modes would force callers to remember which refdata UUID pairs with which mode.
+- Each sibling can be versioned, tested, and refreshed independently. If the GTDB protein DB gets a new release, `cdm_mmseqs2_gtdb` re-registers without touching `cdm_mmseqs2` (which has no refdata at all) or the gtdbtk DB.
+
+---
+
 ## Repo Structure
 
 ```
