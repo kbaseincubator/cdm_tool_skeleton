@@ -99,6 +99,8 @@ Each registered tool ships with an executed demo notebook in its own repo, showi
 | bakta_proteins | [`cdm_bakta_proteins/demo.ipynb`](https://github.com/kbaseincubator/cdm_bakta_proteins/blob/main/demo.ipynb) |
 | psortb | [`cdm_psortb/demo.ipynb`](https://github.com/kbaseincubator/cdm_psortb/blob/main/demo.ipynb) |
 | gtdbtk | [`cdm_gtdbtk/demo.ipynb`](https://github.com/kbaseincubator/cdm_gtdbtk/blob/main/demo.ipynb) |
+| skani | [`cdm_skani/demo.ipynb`](https://github.com/kbaseincubator/cdm_skani/blob/main/demo.ipynb) |
+| skani_gtdb | [`cdm_skani_gtdb/demo.ipynb`](https://github.com/kbaseincubator/cdm_skani_gtdb/blob/main/demo.ipynb) |
 
 To run a demo yourself, open the corresponding notebook from `global_share/jplfaria/` on hub.berdl.kbase.us (these copies are kept in sync with the per-repo versions).
 
