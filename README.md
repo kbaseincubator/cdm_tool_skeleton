@@ -79,7 +79,7 @@ Status legend:
 | bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.3` | `cts-refdata/bakta/v6.0_amr20260324/bakta_db.tar.gz` (UUID `30f8ba11-…`) | Live end-to-end (validated on CTS: 4/4 containers complete in ~11 min wall time across the 4 test genomes). 0.1.3 overlays diamond v2.2.0 to fix the intermittent pseudogene-detection deadlock that affected 0.1.2; see closed issues #8 and #12. Importer optional, deferred. |
 | bakta_proteins | [cdm_bakta_proteins](https://github.com/kbaseincubator/cdm_bakta_proteins) | `0.1.0` | shares the bakta bundle (UUID `30f8ba11-…`) | Live end-to-end (validated on CTS: 4/4 containers complete in ~9 min wall time, all 5,802 input locus tags round-trip exactly). Sibling to `cdm_bakta` for the proteins-in mode: annotates pre-called protein FASTA without re-predicting genes, preserving the caller's locus tags. Same diamond v2.2.0 overlay as `cdm_bakta:0.1.3`. |
 | psortb | [cdm_psortb](https://github.com/kbaseincubator/cdm_psortb) | `0.1.2` | none (bundled in image) | Live end-to-end (verified on CTS: 583 protein localization predictions). 0.1.0 and 0.1.1 are obsolete (broken). |
-| gtdbtk | — | — | ~100GB taxonomy DB | Planned |
+| gtdbtk | [cdm_gtdbtk](https://github.com/kbaseincubator/cdm_gtdbtk) | `0.1.1` | `cts-refdata/gtdbtk/r232/gtdbtk_r232_data.tar.gz` (UUID `bb6352b4-…`) | Live end-to-end (validated on CTS: classify_wf on the 4 test genomes completes in 3.7 min, taxonomy assigned to species level for all 4). Single image (no sibling split) because gtdbtk always needs the GTDB DB. Tied to R232; future GTDB releases will need a new image. |
 | eggNOG | — | — | eggNOG DB | Planned |
 | RAST | — | — | none | Planned (custom container, needs upstream coordination) |
 | transyt | — | — | none | Planned (custom container) |
@@ -97,6 +97,7 @@ Each registered tool ships with an executed demo notebook in its own repo, showi
 | bakta | [`cdm_bakta/demo.ipynb`](https://github.com/kbaseincubator/cdm_bakta/blob/main/demo.ipynb) |
 | bakta_proteins | [`cdm_bakta_proteins/demo.ipynb`](https://github.com/kbaseincubator/cdm_bakta_proteins/blob/main/demo.ipynb) |
 | psortb | [`cdm_psortb/demo.ipynb`](https://github.com/kbaseincubator/cdm_psortb/blob/main/demo.ipynb) |
+| gtdbtk | [`cdm_gtdbtk/demo.ipynb`](https://github.com/kbaseincubator/cdm_gtdbtk/blob/main/demo.ipynb) |
 
 To run a demo yourself, open the corresponding notebook from `global_share/jplfaria/` on hub.berdl.kbase.us (these copies are kept in sync with the per-repo versions).
 
