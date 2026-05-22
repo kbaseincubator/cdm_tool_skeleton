@@ -20,11 +20,11 @@ See `docs/pattern.md` for the full pattern with examples.
 
 ---
 
-## One image vs. multiple sibling images
+## One image vs. multiple image variants
 
-Before creating a new tool repo, decide whether the tool needs a single image (the default) or a pair / set of sibling images each registered separately in CTS.
+Before creating a new tool repo, decide whether the tool needs a single image (the default) or a pair / set of variant images each registered separately in CTS.
 
-**Use sibling images when EITHER applies:**
+**Use variant images when EITHER applies:**
 
 1. **Upstream ships multiple binaries** that take different inputs or do different things. Wrap each binary as its own image.
    - Live example: `cdm_bakta` wraps the `bakta` binary (nucleotide assembly in, predicts genes); `cdm_bakta_proteins` wraps the `bakta_proteins` binary (protein FASTA in, preserves caller's locus tags). Same upstream package, two distinct commands, so two registered images.
@@ -42,7 +42,7 @@ Before creating a new tool repo, decide whether the tool needs a single image (t
 
 - CTS registers each (image, refdata) pair once with its own usage notes. Two registered tools is cleaner provenance than one tool whose docs say "if mode A use refdata X, if mode B use refdata Y."
 - Different refdata bundles are distinct registered entities in CTS, each with its own UUID. A single image with multiple modes would force callers to remember which refdata UUID pairs with which mode.
-- Each sibling can be versioned, tested, and refreshed independently. If the GTDB protein DB gets a new release, `cdm_mmseqs2_gtdb` re-registers without touching `cdm_mmseqs2` (which has no refdata at all) or the gtdbtk DB.
+- Each variant can be versioned, tested, and refreshed independently. If the GTDB protein DB gets a new release, `cdm_mmseqs2_gtdb` re-registers without touching `cdm_mmseqs2` (which has no refdata at all) or the gtdbtk DB.
 
 ---
 
@@ -77,9 +77,9 @@ Status legend:
 | mmseqs2 | [cdm_mmseqs2](https://github.com/kbaseincubator/cdm_mmseqs2) | `0.1.0` | no | Live end-to-end. Importer PR pending merge ([cdm-spark-events-importers#35](https://github.com/kbase/cdm-spark-events-importers/pull/35)). |
 | kofamscan | [cdm_kofamscan](https://github.com/kbaseincubator/cdm_kofamscan) | `0.1.0` | `cts-refdata/kofam/2025-04-30/kofam_refdata.tar.gz` (UUID `84b31af0-…`) | Live end-to-end (demo notebook produces 147K KO annotations). Importer optional, deferred. |
 | bakta | [cdm_bakta](https://github.com/kbaseincubator/cdm_bakta) | `0.1.3` | `cts-refdata/bakta/v6.0_amr20260324/bakta_db.tar.gz` (UUID `30f8ba11-…`) | Live end-to-end (validated on CTS: 4/4 containers complete in ~11 min wall time across the 4 test genomes). 0.1.3 overlays diamond v2.2.0 to fix the intermittent pseudogene-detection deadlock that affected 0.1.2; see closed issues #8 and #12. Importer optional, deferred. |
-| bakta_proteins | [cdm_bakta_proteins](https://github.com/kbaseincubator/cdm_bakta_proteins) | `0.1.0` | shares the bakta bundle (UUID `30f8ba11-…`) | Live end-to-end (validated on CTS: 4/4 containers complete in ~9 min wall time, all 5,802 input locus tags round-trip exactly). Sibling to `cdm_bakta` for the proteins-in mode: annotates pre-called protein FASTA without re-predicting genes, preserving the caller's locus tags. Same diamond v2.2.0 overlay as `cdm_bakta:0.1.3`. |
+| bakta_proteins | [cdm_bakta_proteins](https://github.com/kbaseincubator/cdm_bakta_proteins) | `0.1.0` | shares the bakta bundle (UUID `30f8ba11-…`) | Live end-to-end (validated on CTS: 4/4 containers complete in ~9 min wall time, all 5,802 input locus tags round-trip exactly). Variant of `cdm_bakta` for the proteins-in mode: annotates pre-called protein FASTA without re-predicting genes, preserving the caller's locus tags. Same diamond v2.2.0 overlay as `cdm_bakta:0.1.3`. |
 | psortb | [cdm_psortb](https://github.com/kbaseincubator/cdm_psortb) | `0.1.2` | none (bundled in image) | Live end-to-end (verified on CTS: 583 protein localization predictions). 0.1.0 and 0.1.1 are obsolete (broken). |
-| gtdbtk | [cdm_gtdbtk](https://github.com/kbaseincubator/cdm_gtdbtk) | `0.1.1` | `cts-refdata/gtdbtk/r232/gtdbtk_r232_data.tar.gz` (UUID `bb6352b4-…`) | Live end-to-end (validated on CTS: classify_wf on the 4 test genomes completes in 3.7 min, taxonomy assigned to species level for all 4). Single image (no sibling split) because gtdbtk always needs the GTDB DB. Tied to R232; future GTDB releases will need a new image. |
+| gtdbtk | [cdm_gtdbtk](https://github.com/kbaseincubator/cdm_gtdbtk) | `0.1.1` | `cts-refdata/gtdbtk/r232/gtdbtk_r232_data.tar.gz` (UUID `bb6352b4-…`) | Live end-to-end (validated on CTS: classify_wf on the 4 test genomes completes in 3.7 min, taxonomy assigned to species level for all 4). Single image (no variant split) because gtdbtk always needs the GTDB DB. Tied to R232; future GTDB releases will need a new image. |
 | eggNOG | — | — | eggNOG DB | Planned |
 | RAST | — | — | none | Planned (custom container, needs upstream coordination) |
 | transyt | — | — | none | Planned (custom container) |
