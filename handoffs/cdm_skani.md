@@ -1,9 +1,9 @@
 # skani Handoff
 
-**Status:** Open
+**Status:** Done
 **Live issue:** [#20](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/20)
 **Sent:** 2026-05-22
-**Completed:** TBD
+**Completed:** 2026-05-22
 
 Generic skani ANI calculator, no bundled refdata. Pairs with `cdm_skani_gtdb` (separate handoff) which binds the GTDB R232 sketches from the existing gtdbtk refdata bundle.
 

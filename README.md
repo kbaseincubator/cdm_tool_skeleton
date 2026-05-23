@@ -85,8 +85,8 @@ Status legend:
 | RAST | — | — | none | Planned (custom container, needs upstream coordination) |
 | transyt | — | — | none | Planned (custom container) |
 | modelseedpy | — | — | none | Planned (custom container from upstream maintainer) |
-| skani | [cdm_skani](https://github.com/kbaseincubator/cdm_skani) | `0.1.0` | none (generic ANI) | Awaiting registration ([#20](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/20)). Built locally + CI smoke test on real amd64 gates push. Pinned to skani 0.3.1, the version bundled in `ecogenomic/gtdbtk:2.7.2` (so sketches the gtdbtk image built are guaranteed compatible). |
-| skani_gtdb | [cdm_skani_gtdb](https://github.com/kbaseincubator/cdm_skani_gtdb) | `0.1.0` | reuses gtdbtk R232 UUID `bb6352b4-...` (skani sketches at `/ref_data/release232/skani/`) | Awaiting registration ([#21](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/21)). Same skani 0.3.1 binary as cdm_skani; intended to be registered against the existing gtdbtk refdata bundle so both tools resolve closest-reference IDs to the same GTDB R232 release. |
+| skani | [cdm_skani](https://github.com/kbaseincubator/cdm_skani) | `0.1.0` | none (generic ANI) | Live end-to-end (CTS sanity job: `triangle` on the 4 test genomes runs in ~40s, exit 0). Pinned to skani 0.3.1, the version bundled in `ecogenomic/gtdbtk:2.7.2` (so sketches the gtdbtk image built are guaranteed compatible). Closed [#20](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/20). |
+| skani_gtdb | [cdm_skani_gtdb](https://github.com/kbaseincubator/cdm_skani_gtdb) | `0.1.0` | reuses gtdbtk R232 UUID `bb6352b4-...` (skani sketches at `/ref_data/release232/skani/database/`) | Live end-to-end (CTS sanity job: Zinderia matches own GTDB rep at 100% ANI; cross-check vs gtdbtk's `closest_genome_reference` agrees on all 4 test genomes). Same skani 0.3.1 binary as cdm_skani; registered against the existing gtdbtk refdata bundle so both tools resolve closest-reference IDs to the same GTDB R232 release. Closed [#21](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/21). |
 
 ### Demo notebooks
 
@@ -125,9 +125,11 @@ Things waiting on others. Update as items move.
 
 Tracked as GitHub issues with task list checkboxes the CTS admin ticks off as each step completes. Templates and archive in [`handoffs/`](handoffs/).
 
-Currently open:
-- [#20 cdm_skani 0.1.0](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/20): register image (generic skani, no refdata)
-- [#21 cdm_skani_gtdb 0.1.0](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/21): register image + bind to existing gtdbtk R232 refdata UUID `bb6352b4-...`
+Currently open: none.
+
+Recently closed:
+- [#20 cdm_skani 0.1.0](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/20): registered, sanity green, demo notebook executed and pushed. Closed 2026-05-22.
+- [#21 cdm_skani_gtdb 0.1.0](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/21): registered + bound to existing gtdbtk R232 UUID `bb6352b4-...`, re-registered with corrected `-d /ref_data/release232/skani/database/` path in usage_notes, sanity green (matches gtdbtk's `closest_genome_reference` perfectly on all 4 test genomes). Closed 2026-05-22.
 
 Refdata path convention: `cts-refdata/{toolname}/{refdata_version}/{filename}`. The path version is the **refdata version**, not the tool version. See [`handoffs/README.md`](handoffs/README.md) for full conventions and process for adding new handoffs.
 

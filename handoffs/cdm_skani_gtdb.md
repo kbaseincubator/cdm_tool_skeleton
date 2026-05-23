@@ -1,9 +1,9 @@
 # skani_gtdb Handoff
 
-**Status:** Open
+**Status:** Done
 **Live issue:** [#21](https://github.com/kbaseincubator/cdm_tool_skeleton/issues/21)
 **Sent:** 2026-05-22
-**Completed:** TBD
+**Completed:** 2026-05-22
 
 Skani ANI calculator pre-paired with the **GTDB R232 reference sketches**. Lets us get nearest-GTDB-reference ANI per genome in seconds (the same number gtdbtk produces as `closest_genome_ani`, but standalone, without paying the 1-4 hour gtdbtk classify_wf cost). Also exposes top-N hits via `-n` instead of gtdbtk's collapsed top-1.
 
@@ -45,7 +45,10 @@ curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_s
 
 Then a minimal end-to-end CTS job from a notebook: submit one of the existing test genomes (e.g. `GCA_000147015.1_ASM14701v1_genomic.fna.gz`) with `args=["search", "-d", "/ref_data/release232/skani/database/", "-o", "/out/hits.tsv", "-t", "4", "-n", "5", "--short-header", tscli.insert_files()]`. Expect ~5 GTDB representative hits including `GCA_000147015.1` at ANI 100% (it IS the GTDB rep for *Zinderia insecticola*).
 
-## Confirmation (fill in when CTS admin completes)
+## Confirmation
 
-- Image registered against refdata UUID `bb6352b4-...`: yes/no
-- Notes (especially: does CTS allow binding two images to the same refdata UUID, or did this require a workaround?):
+- Image registered against refdata UUID `bb6352b4-...`: yes (gavinlocaladmin, first reg 2026-05-22T19:29:42Z, re-registered with corrected usage_notes path 2026-05-22T21:42:47Z)
+- CTS supports binding two distinct images to one refdata UUID without any workaround (confirmed by Gavin on issue #21)
+- Sanity job result: Zinderia insecticola matches its own GTDB rep at 100% ANI (`search` job 043d99f9-c3c8-478d-af60-908381f5812a, 100s wall time, exit 0)
+- Demo notebook executed and pushed to repo; cross-check against gtdbtk's `closest_genome_reference` confirms perfect agreement on all 4 test genomes
+- Initial usage_notes had the wrong path (`/ref_data/release232/skani/` instead of `/ref_data/release232/skani/database/`). Bundle layout quirk now captured in `~/.claude/projects/.../memory/feedback_gtdb_r232_layout.md` so future variant tools don't repeat the mistake.
