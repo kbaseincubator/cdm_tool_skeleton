@@ -33,7 +33,8 @@ curl -s "https://berdl.kbase.us/apis/cts/images/ghcr.io%2Fkbaseincubator%2Fcdm_s
   -H "Authorization: Bearer $KBASE_TOKEN" | jq
 ```
 
-## Confirmation (fill in when CTS admin completes)
+## Confirmation
 
-- Image registered: yes/no
-- Notes:
+- Image registered: yes (gavinlocaladmin, 2026-05-22T19:35:57Z)
+- Sanity job result: `triangle` on the 4 standard test genomes ran clean in ~40s, exit 0 (output header-only TSV as expected since the 4 test species are too distant to clear skani's marker screen)
+- Demo notebook executed and pushed to the repo
